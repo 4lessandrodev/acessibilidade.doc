@@ -1,4 +1,4 @@
-# Exemplo Acessível — Fluxo de Login | HTML + JS (GitHub Pages)
+# Exemplo Acessível — Fluxo de Login | HTML + JS
 
 Este repositório contém um **site estático** (GitHub Pages) com um fluxo simples de login:
 
