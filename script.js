@@ -122,8 +122,8 @@
             submitted = true;
             const { ok, digits } = validate(true);
             if (!ok) {
-                input.focus();
-                return;
+              if (document.activeElement !== input) input.focus();
+              return;
             }
 
             sessionStorage.setItem("demo.cpf", digits);
@@ -154,8 +154,6 @@
             e.preventDefault();
             tryNext();
         });
-
-        input.focus();
     }
 
     // ---- Page: Senha ----------------------------------------------------------
@@ -203,9 +201,10 @@
         function tryLogin() {
             submitted = true;
             const { ok } = validate(true);
+        
             if (!ok) {
-                input.focus();
-                return;
+              if (document.activeElement !== input) input.focus();
+              return;
             }
 
             sessionStorage.setItem("demo.logged", "true");
@@ -247,8 +246,6 @@
                 // Não muda foco (boa prática)
             });
         }
-
-        input.focus();
     }
 
     // ---- Page: Sucesso --------------------------------------------------------
