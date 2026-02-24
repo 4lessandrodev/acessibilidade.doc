@@ -138,6 +138,7 @@
 
         input.addEventListener("input", () => {
             // incremental: se já tocou ou já tentou avançar, valida em tempo real
+            applyCpfMaskKeepCaret(input);
             validate(touched || submitted);
         });
 
