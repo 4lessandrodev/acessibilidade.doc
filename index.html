@@ -1,91 +1,142 @@
 <!doctype html>
 <html lang="pt-BR">
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Exemplo Acessível — Login (CPF + Senha)</title>
-</head>
 
-<body>
-    <a href="#conteudo-principal">Pular para o conteúdo principal</a>
+    <style>
+      .skip-link {
+        position: absolute;
+        left: -9999px;
+        top: 0;
+      }
+      .skip-link:focus {
+        left: 0;
+      }
+    </style>
+  </head>
+
+  <body>
+    <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
 
     <header>
-        <nav aria-label="Navegação principal">
-            <a href="home.html">Ir para o exemplo (Home)</a>
-        </nav>
+      <nav aria-label="Navegação principal">
+        <a href="home.html">Ir para o exemplo (Home)</a>
+      </nav>
     </header>
 
-    <main id="conteudo-principal">
-        <h1>Exemplo Acessível — Fluxo de Login com CPF e Senha</h1>
+    <main id="conteudo-principal" aria-labelledby="titulo-pagina">
+      <h1 id="titulo-pagina">Exemplo Acessível — Fluxo de Login com CPF e Senha</h1>
 
-        <section aria-labelledby="objetivo">
-            <h2 id="objetivo">Objetivo</h2>
-            <p>
-                Este site demonstra um fluxo simples (Home → CPF → Senha → Sucesso)
-                com foco em <strong>semântica</strong>, <strong>navegação por teclado</strong>
-                e <strong>compatibilidade com leitores de tela</strong>.
-            </p>
-            <p>
-                <a href="home.html">Abrir o exemplo</a>
-            </p>
-        </section>
+      <section aria-labelledby="objetivo">
+        <h2 id="objetivo">Objetivo</h2>
+        <p>
+          Este site demonstra um fluxo simples (Home → CPF → Senha → Sucesso) com foco em
+          <strong>semântica</strong>, <strong>navegação por teclado</strong> e
+          <strong>compatibilidade com leitores de tela</strong>.
+        </p>
+        <p>
+          <a href="home.html">Abrir o exemplo</a>
+        </p>
+      </section>
 
-        <section aria-labelledby="por-que-acessivel">
-            <h2 id="por-que-acessivel">O que torna o fluxo acessível</h2>
-            <ul>
-                <li><strong>Estrutura semântica</strong>: uso de <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>,
-                    <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;aside&gt;</code>.</li>
-                <li><strong>Skip link</strong>: permite pular direto para o conteúdo principal.</li>
-                <li><strong>Labels reais</strong>: <code>&lt;label for&gt;</code> associado ao
-                    <code>&lt;input&gt;</code>.</li>
-                <li><strong>Erros anunciados</strong>: mensagens de erro com <code>role="alert"</code> e estado com
-                    <code>aria-invalid</code>.</li>
-                <li><strong>Mensagens dinâmicas</strong>: região com <code>role="status"</code> e
-                    <code>aria-live="polite"</code>.</li>
-                <li><strong>Botão “mostrar senha” correto</strong>: <code>&lt;button&gt;</code> com
-                    <code>aria-pressed</code> e <code>aria-controls</code>.</li>
-                <li><strong>Sem JS “quebrador” de teclado</strong>: foco e ordem de tabulação naturais.</li>
-            </ul>
-        </section>
+      <section aria-labelledby="por-que-acessivel">
+        <h2 id="por-que-acessivel">O que torna o fluxo acessível</h2>
+        <ul>
+          <li>
+            <strong>Estrutura semântica</strong>: uso de <code>&lt;header&gt;</code>, <code>&lt;nav&gt;</code>,
+            <code>&lt;main&gt;</code>, <code>&lt;section&gt;</code>, <code>&lt;aside&gt;</code>.
+          </li>
+          <li><strong>Skip link</strong>: permite pular direto para o conteúdo principal.</li>
+          <li>
+            <strong>Labels reais</strong>: <code>&lt;label for&gt;</code> associado ao <code>&lt;input&gt;</code>.
+          </li>
+          <li>
+            <strong>Erros anunciados</strong>: mensagens de erro com <code>role="alert"</code> e estado com
+            <code>aria-invalid</code>.
+          </li>
+          <li>
+            <strong>Mensagens dinâmicas</strong>: região com <code>role="status"</code> e
+            <code>aria-live="polite"</code>.
+          </li>
+          <li>
+            <strong>Botão “mostrar senha” correto</strong>: <code>&lt;button&gt;</code> com
+            <code>aria-pressed</code> e <code>aria-controls</code>.
+          </li>
+          <li><strong>Sem JS “quebrador” de teclado</strong>: foco e ordem de tabulação naturais.</li>
+        </ul>
+      </section>
 
-        <section aria-labelledby="comportamento-leitor">
-            <h2 id="comportamento-leitor">Como leitores de tela interpretam</h2>
-            <ul>
-                <li><strong>Títulos</strong> (H): navegação por headings para entender a página rapidamente.</li>
-                <li><strong>Regiões</strong>: leitores pulam entre header/nav/main/aside.</li>
-                <li><strong>Formulários</strong>: ao focar um input, o leitor anuncia label, tipo, obrigatório e
-                    “inválido”.</li>
-                <li><strong>Alert</strong>: <code>role="alert"</code> interrompe para anunciar erros imediatamente.</li>
-                <li><strong>Status</strong>: <code>role="status"</code> anuncia mensagens sem interromper
-                    agressivamente.</li>
-            </ul>
-        </section>
+      <section aria-labelledby="comportamento-leitor">
+        <h2 id="comportamento-leitor">Como leitores de tela interpretam</h2>
+        <ul>
+          <li><strong>Títulos</strong> (H): navegação por headings para entender a página rapidamente.</li>
+          <li><strong>Regiões</strong>: leitores pulam entre header/nav/main/aside.</li>
+          <li>
+            <strong>Formulários</strong>: ao focar um input, o leitor anuncia label, tipo, obrigatório e “inválido”.
+          </li>
+          <li><strong>Alert</strong>: <code>role="alert"</code> interrompe para anunciar erros imediatamente.</li>
+          <li>
+            <strong>Status</strong>: <code>role="status"</code> anuncia mensagens sem interromper agressivamente.
+          </li>
+        </ul>
+      </section>
 
-        <section aria-labelledby="referencias" id="referencias">
-            <h2 id="referencias">Referências Oficiais</h2>
-            <ul>
-                <li><a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer">WCAG 2.2 — W3C</a>
-                </li>
-                <li><a href="https://www.w3.org/TR/WCAG21/" target="_blank" rel="noopener noreferrer">WCAG 2.1 — W3C</a>
-                </li>
-                <li><a href="https://www.w3.org/WAI/WCAG22/Understanding/" target="_blank"
-                        rel="noopener noreferrer">Understanding WCAG — W3C</a></li>
-                <li><a href="https://www.w3.org/TR/wai-aria-1.2/" target="_blank" rel="noopener noreferrer">WAI-ARIA —
-                        W3C</a></li>
-                <li><a href="https://www.w3.org/WAI/ARIA/apg/" target="_blank" rel="noopener noreferrer">ARIA Authoring
-                        Practices — W3C</a></li>
-                <li><a href="https://html.spec.whatwg.org/" target="_blank" rel="noopener noreferrer">HTML Living
-                        Standard — WHATWG</a></li>
-                <li><a href="https://developer.mozilla.org/pt-BR/docs/Web/Accessibility" target="_blank"
-                        rel="noopener noreferrer">Acessibilidade — MDN</a></li>
-            </ul>
-        </section>
+      <section aria-labelledby="referencias" id="referencias">
+        <h2 id="referencias">Referências Oficiais</h2>
+        <ul>
+          <li>
+            <a href="https://www.w3.org/TR/WCAG22/" target="_blank" rel="noopener noreferrer">
+              WCAG 2.2 — W3C
+            </a>
+          </li>
+          <li>
+            <a href="https://www.w3.org/TR/WCAG21/" target="_blank" rel="noopener noreferrer">
+              WCAG 2.1 — W3C
+            </a>
+          </li>
+          <li>
+            <a href="https://www.w3.org/WAI/WCAG22/Understanding/" target="_blank" rel="noopener noreferrer">
+              Understanding WCAG — W3C
+            </a>
+          </li>
+          <li>
+            <a href="https://www.w3.org/TR/wai-aria-1.2/" target="_blank" rel="noopener noreferrer">
+              WAI-ARIA — W3C
+            </a>
+          </li>
+          <li>
+            <a href="https://www.w3.org/WAI/ARIA/apg/" target="_blank" rel="noopener noreferrer">
+              ARIA Authoring Practices — W3C
+            </a>
+          </li>
+          <li>
+            <a href="https://html.spec.whatwg.org/" target="_blank" rel="noopener noreferrer">
+              HTML Living Standard — WHATWG
+            </a>
+          </li>
+          <li>
+            <a href="https://developer.mozilla.org/pt-BR/docs/Web/Accessibility" target="_blank" rel="noopener noreferrer">
+              Acessibilidade — MDN
+            </a>
+          </li>
+        </ul>
+      </section>
+
+      <section aria-labelledby="atalhos">
+        <h2 id="atalhos">Atalhos</h2>
+        <ul>
+          <li><a href="home.html">Ir para Home do exemplo</a></li>
+          <li><a href="cpf.html">Ir direto para CPF</a></li>
+          <li><a href="senha.html">Ir direto para Senha</a></li>
+          <li><a href="sucesso.html">Ir direto para Sucesso</a></li>
+        </ul>
+      </section>
     </main>
 
     <footer>
-        <p>Exemplo educativo de acessibilidade (HTML + JS puro).</p>
+      <p>Exemplo educativo de acessibilidade (HTML + JS puro).</p>
     </footer>
-</body>
-
+  </body>
 </html>
