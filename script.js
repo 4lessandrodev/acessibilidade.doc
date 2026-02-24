@@ -1,5 +1,6 @@
-/* script.js — demo acessível (GitHub Pages) */
 (function () {
+  const NAV_DELAY_MS = 250;
+
   function byId(id) {
     return document.getElementById(id);
   }
@@ -27,21 +28,44 @@
     el.textContent = text || "";
   }
 
-  // Anuncia numa região aria-live. Se houver navegação em seguida, use delay.
+  function setLiveText(el, text) {
+    if (!el) return;
+    const next = text || "";
+    el.textContent = "";
+    requestAnimationFrame(() => {
+      el.textContent = next;
+    });
+  }
+
+  function ensureProgrammaticFocusable(el) {
+    if (!el) return;
+    if (!el.hasAttribute("tabindex")) el.setAttribute("tabindex", "-1");
+  }
+
   function announce(statusEl, text) {
     if (!statusEl) return;
-    // garante foco possível via JS, sem auto-focus no load
-    if (!statusEl.hasAttribute("tabindex")) statusEl.setAttribute("tabindex", "-1");
-    statusEl.textContent = text || "";
+    ensureProgrammaticFocusable(statusEl);
+    setLiveText(statusEl, text);
+  }
+
+  function announceAndGo(statusEl, text, url) {
+    announce(statusEl, text);
+    setTimeout(() => (window.location.href = url), NAV_DELAY_MS);
   }
 
   function setFieldInvalid(inputEl, errorEl, message) {
-    if (inputEl) inputEl.setAttribute("aria-invalid", "true");
-    if (errorEl) errorEl.textContent = message || "";
+    if (inputEl) {
+      inputEl.setAttribute("aria-invalid", "true");
+      if (errorEl && errorEl.id) inputEl.setAttribute("aria-errormessage", errorEl.id);
+    }
+    if (errorEl) setLiveText(errorEl, message || "");
   }
 
   function clearFieldInvalid(inputEl, errorEl) {
-    if (inputEl) inputEl.setAttribute("aria-invalid", "false");
+    if (inputEl) {
+      inputEl.setAttribute("aria-invalid", "false");
+      inputEl.removeAttribute("aria-errormessage");
+    }
     if (errorEl) errorEl.textContent = "";
   }
 
@@ -49,10 +73,6 @@
     const btn = byId(buttonId);
     if (!btn) return;
     btn.addEventListener("click", () => history.back());
-  }
-
-  function go(url) {
-    window.location.href = url;
   }
 
   // ===== CPF máscara (com caret estável) =====
@@ -71,7 +91,6 @@
     if (!inputEl) return;
 
     const prev = inputEl.value || "";
-    // selectionStart pode ser null em alguns browsers/estados
     const prevPos = typeof inputEl.selectionStart === "number" ? inputEl.selectionStart : prev.length;
 
     const digitsBefore = prev.slice(0, prevPos).replace(/\D/g, "").length;
@@ -82,7 +101,6 @@
 
     inputEl.value = formatted;
 
-    // Só tenta reposicionar caret se suportado
     if (typeof inputEl.setSelectionRange !== "function") return;
 
     let newPos = 0;
@@ -100,14 +118,15 @@
     sessionStorage.removeItem("demo.logged");
 
     const btn = byId("btn-login");
-    if (btn) btn.addEventListener("click", () => go("cpf.html"));
+    if (btn) btn.addEventListener("click", () => (window.location.href = "cpf.html"));
   }
 
   // ---- Page: CPF ------------------------------------------------------------
   function initCpf() {
     bindBackButton("back");
 
-    const form = byId("cpf-form");
+    // Compatível com HTML antigo e o novo (“máximo”)
+    const form = firstId("form-cpf", "cpf-form");
     const input = byId("cpf");
     const error = byId("cpf-erro");
     const status = byId("mensagens");
@@ -148,11 +167,8 @@
 
       sessionStorage.setItem("demo.cpf", digits);
 
-      // Se você quer que o leitor de tela OUÇA a mensagem, não navegue instantâneo.
-      announce(status, "CPF validado. Indo para a etapa de senha.");
-
-      // Delay curto para permitir anúncio (sem “auto-focus” e sem quebrar UX)
-      setTimeout(() => go("senha.html"), 200);
+      // Mensagem + delay para permitir anúncio antes do redirect
+      announceAndGo(status, "CPF validado. Indo para a etapa de senha.", "senha.html");
     }
 
     input.addEventListener("blur", () => {
@@ -177,7 +193,6 @@
       tryNext();
     });
 
-    // ✅ Sem focus automático no load
   }
 
   // ---- Page: Senha ----------------------------------------------------------
@@ -186,7 +201,7 @@
 
     const cpf = sessionStorage.getItem("demo.cpf");
     if (!cpf) {
-      go("cpf.html");
+      window.location.href = "cpf.html";
       return;
     }
 
@@ -234,8 +249,7 @@
 
       sessionStorage.setItem("demo.logged", "true");
 
-      announce(status, "Autenticação concluída. Indo para a tela de sucesso.");
-      setTimeout(() => go("sucesso.html"), 200);
+      announceAndGo(status, "Autenticação concluída. Indo para a tela de sucesso.", "sucesso.html");
     }
 
     input.addEventListener("blur", () => {
@@ -269,8 +283,6 @@
         input.type = next ? "text" : "password";
       });
     }
-
-    // ✅ Sem focus automático no load
   }
 
   // ---- Page: Sucesso --------------------------------------------------------
@@ -279,11 +291,10 @@
     const status = byId("status");
     const btn = byId("voltar-home");
 
-    if (btn) btn.addEventListener("click", () => go("home.html"));
+    if (btn) btn.addEventListener("click", () => (window.location.href = "home.html"));
 
     if (!logged) {
-      announce(status, "Sessão não encontrada. Redirecionando para Home.");
-      setTimeout(() => go("home.html"), 200);
+      announceAndGo(status, "Sessão não encontrada. Redirecionando para Home.", "home.html");
       return;
     }
 
