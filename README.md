@@ -110,10 +110,10 @@ WCAG não é uma ferramenta.
 
 A melhor forma de validar acessibilidade é:
 
-1. Testar com teclado
-2. Testar com leitor de tela
-3. Usar ferramentas automáticas
-4. Validar manualmente com checklist WCAG
+     1. Testar com teclado
+     2. Testar com leitor de tela
+     3. Usar ferramentas automáticas
+     4. Validar manualmente com checklist WCAG
 
 
 ---
@@ -450,9 +450,9 @@ Nunca usar `<div>` clicável.
 
 ### Por que é acessível?
 
-* É focável
-* Funciona com Enter e Espaço
-* É semanticamente correto
+     * É focável
+     * Funciona com Enter e Espaço
+     * É semanticamente correto
 
 Leitor anuncia:
 
@@ -492,13 +492,13 @@ Usuários podem navegar diretamente até ela.
 
 A ordem natural de foco:
 
-1. Pular para conteúdo
-2. Voltar
-3. Campo CPF
-4. Link "Não possui CPF?"
-5. Botão Próximo
-6. Link Cadastrar
-7. Link Suporte
+     1. Pular para conteúdo
+     2. Voltar
+     3. Campo CPF
+     4. Link "Não possui CPF?"
+     5. Botão Próximo
+     6. Link Cadastrar
+     7. Link Suporte
 
 Nenhum elemento depende apenas do mouse.
 
@@ -508,40 +508,40 @@ Nenhum elemento depende apenas do mouse.
 
 Usuários podem navegar por:
 
-* Títulos
-* Regiões
-* Formulários
-* Botões
-* Links
+     * Títulos
+     * Regiões
+     * Formulários
+     * Botões
+     * Links
 
 Leitores compatíveis:
 
-* NVDA
-* JAWS
-* VoiceOver
-* TalkBack
+     * NVDA
+     * JAWS
+     * VoiceOver
+     * TalkBack
 
 ---
 
 # 13. Boas Práticas Aplicadas
 
-✔ HTML semântico
-✔ ARIA apenas quando necessário
-✔ Labels explícitos
-✔ Mensagens dinâmicas anunciadas
-✔ Erros anunciados imediatamente
-✔ Navegação por teclado
-✔ Estrutura hierárquica correta
-✔ Regiões identificadas
+     ✔ HTML semântico
+     ✔ ARIA apenas quando necessário
+     ✔ Labels explícitos
+     ✔ Mensagens dinâmicas anunciadas
+     ✔ Erros anunciados imediatamente
+     ✔ Navegação por teclado
+     ✔ Estrutura hierárquica correta
+     ✔ Regiões identificadas
 
 ---
 
 # 14. O que NÃO foi feito (intencionalmente)
 
-❌ Não usar placeholder como label
-❌ Não usar div como botão
-❌ Não usar apenas cor para indicar erro
-❌ Não usar JavaScript que quebre navegação por teclado
+     ❌ Não usar placeholder como label
+     ❌ Não usar div como botão
+     ❌ Não usar apenas cor para indicar erro
+     ❌ Não usar JavaScript que quebre navegação por teclado
 
 ---
 
@@ -549,11 +549,11 @@ Leitores compatíveis:
 
 Essa página é acessível porque:
 
-* É estruturada corretamente
-* Comunica estados claramente
-* Funciona com teclado
-* Funciona com leitores de tela
-* Segue WCAG 2.1
+     * É estruturada corretamente
+     * Comunica estados claramente
+     * Funciona com teclado
+     * Funciona com leitores de tela
+     * Segue WCAG 2.1
 
 Acessibilidade não é adicionar ARIA.
 É escrever HTML correto e complementar apenas quando necessário.
