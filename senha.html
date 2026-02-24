@@ -1,65 +1,115 @@
 <!doctype html>
 <html lang="pt-BR">
-
-<head>
+  <head>
     <meta charset="utf-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1" />
     <title>Entrar — Senha</title>
-    <script src="script.js" defer></script>
-</head>
 
-<body data-page="senha">
-    <a href="#conteudo-principal">Pular para o conteúdo principal</a>
+    <style>
+      .sr-only {
+        position: absolute !important;
+        width: 1px !important;
+        height: 1px !important;
+        padding: 0 !important;
+        margin: -1px !important;
+        overflow: hidden !important;
+        clip: rect(0, 0, 0, 0) !important;
+        white-space: nowrap !important;
+        border: 0 !important;
+      }
+      .skip-link {
+        position: absolute;
+        left: -9999px;
+        top: 0;
+      }
+      .skip-link:focus {
+        left: 0;
+      }
+    </style>
+
+    <script src="script.js" defer></script>
+  </head>
+
+  <body data-page="senha">
+    <a class="skip-link" href="#conteudo-principal">Pular para o conteúdo principal</a>
+    <a class="skip-link" href="#form-senha">Pular para o formulário</a>
 
     <header>
-        <nav aria-label="Navegação superior">
-            <button type="button" id="back" aria-label="Voltar para a tela anterior">
-                <span aria-hidden="true">←</span>
-            </button>
-            <p id="titulo-tela">Entrar na minha conta</p>
-        </nav>
+      <nav aria-label="Navegação superior">
+        <button type="button" id="back">
+          <span aria-hidden="true">←</span>
+          <span class="sr-only">Voltar para a tela anterior</span>
+        </button>
+
+        <span id="titulo-tela">Entrar na minha conta</span>
+      </nav>
     </header>
 
-    <main id="conteudo-principal" aria-labelledby="titulo-secao">
-        <section aria-labelledby="titulo-secao" aria-describedby="descricao-secao">
-            <h1 id="titulo-secao">Informe sua senha</h1>
-            <p id="descricao-secao">Digite sua senha para entrar no seu perfil.</p>
+    <main id="conteudo-principal">
+      <section aria-labelledby="titulo-secao" aria-describedby="descricao-secao">
+        <h1 id="titulo-secao">Informe sua senha</h1>
+        <p id="descricao-secao">Digite sua senha para entrar no seu perfil.</p>
 
-            <p id="cpf-contexto" aria-live="polite"></p>
+        <p id="cpf-contexto"></p>
 
-            <div id="mensagens" role="status" aria-live="polite" aria-atomic="true"></div>
+        <div
+          id="mensagens"
+          role="status"
+          aria-live="polite"
+          aria-atomic="true"
+          tabindex="-1"
+        ></div>
 
-            <form id="senha-form" novalidate>
-                <fieldset>
-                    <legend>Autenticação</legend>
+        <form id="form-senha" aria-labelledby="titulo-secao" novalidate>
+          <fieldset>
+            <legend>Autenticação</legend>
 
-                    <label for="password">Digite sua senha</label>
-                    <p id="password-ajuda">Use a senha cadastrada para este CPF.</p>
+            <label id="password-label" for="password">
+              Senha <span class="sr-only">(obrigatória)</span>
+            </label>
 
-                    <div>
-                        <input id="password" name="password" type="password" autocomplete="current-password" required
-                            aria-describedby="password-ajuda password-erro" aria-invalid="false" />
-
-                        <button type="button" id="toggle-password" aria-controls="password" aria-pressed="false"
-                            aria-label="Mostrar senha">
-                            <span aria-hidden="true">👁</span>
-                        </button>
-                    </div>
-
-                    <p id="password-erro" role="alert"></p>
-
-                    <button type="submit">Entrar</button>
-                </fieldset>
-            </form>
-        </section>
-
-        <aside aria-label="Ajuda e suporte">
-            <p>
-                Está com dúvida?
-                <a href="index.html#referencias">Ver referências</a>
+            <p id="password-ajuda">
+              Use a senha cadastrada para este CPF.
             </p>
-        </aside>
-    </main>
-</body>
 
+            <div role="group" aria-labelledby="password-label" aria-describedby="password-ajuda">
+              <input
+                id="password"
+                name="password"
+                type="password"
+                autocomplete="current-password"
+                autocapitalize="none"
+                spellcheck="false"
+                required
+                aria-describedby="password-ajuda password-erro"
+                aria-invalid="false"
+              />
+
+              <button
+                type="button"
+                id="toggle-password"
+                aria-controls="password"
+                aria-pressed="false"
+                aria-label="Mostrar senha"
+              >
+                <span aria-hidden="true">👁</span>
+                <span class="sr-only">Alternar visibilidade da senha</span>
+              </button>
+            </div>
+
+            <p id="password-erro" role="alert"></p>
+
+            <button type="submit">Entrar</button>
+          </fieldset>
+        </form>
+      </section>
+
+      <aside aria-label="Ajuda e suporte">
+        <p>
+          Está com dúvida?
+          <a href="index.html#referencias">Ver referências</a>
+        </p>
+      </aside>
+    </main>
+  </body>
 </html>
