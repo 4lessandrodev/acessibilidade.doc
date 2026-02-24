@@ -1,10 +1,12 @@
-# Exemplo Acessível — Fluxo de Login (CPF + Senha) | HTML + JS (GitHub Pages)
+# Exemplo Acessível — Fluxo de Login | HTML + JS (GitHub Pages)
 
 Este repositório contém um **site estático** (GitHub Pages) com um fluxo simples de login:
 
 **Home → CPF → Senha → Sucesso**
 
 O foco é demonstrar **HTML semântico**, **navegação por teclado**, **compatibilidade com leitores de tela** e boas práticas de **validação acessível** com JavaScript puro.
+
+<img width="1359" height="630" alt="image" src="https://github.com/user-attachments/assets/87dc25f5-21b2-4cbf-bf49-b1c5611c58f3" />
 
 ---
 
