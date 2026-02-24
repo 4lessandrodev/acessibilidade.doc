@@ -901,40 +901,40 @@ Sempre incluir skip link em aplicações com navegação repetitiva.
 
 Usuários podem:
 
-* Navegar por títulos (H)
-* Navegar por regiões (R)
-* Navegar por formulários (F)
-* Navegar por botões (B)
-* Navegar por links (L)
+     * Navegar por títulos (H)
+     * Navegar por regiões (R)
+     * Navegar por formulários (F)
+     * Navegar por botões (B)
+     * Navegar por links (L)
 
 A estrutura foi feita para funcionar bem em:
 
-* NVDA
-* JAWS
-* VoiceOver
-* TalkBack
+     * NVDA
+     * JAWS
+     * VoiceOver
+     * TalkBack
 
 ---
 
 # 11. Boas Práticas Aplicadas
 
-✔ HTML semântico antes de ARIA
-✔ ARIA apenas quando necessário
-✔ Labels explícitos
-✔ Estados de erro comunicados
-✔ Botões reais para ações
-✔ Navegação por teclado garantida
-✔ Mensagens dinâmicas acessíveis
-✔ Estrutura hierárquica correta
+     ✔ HTML semântico antes de ARIA
+     ✔ ARIA apenas quando necessário
+     ✔ Labels explícitos
+     ✔ Estados de erro comunicados
+     ✔ Botões reais para ações
+     ✔ Navegação por teclado garantida
+     ✔ Mensagens dinâmicas acessíveis
+     ✔ Estrutura hierárquica correta
 
 ---
 
 # 12. O que NÃO foi feito (intencionalmente)
 
-❌ Não usar div como botão
-❌ Não depender apenas de cor para erro
-❌ Não usar placeholder como label
-❌ Não usar onclick em span
+     ❌ Não usar div como botão
+     ❌ Não depender apenas de cor para erro
+     ❌ Não usar placeholder como label
+     ❌ Não usar onclick em span
 
 ---
 
@@ -942,11 +942,11 @@ A estrutura foi feita para funcionar bem em:
 
 Essa página é acessível porque:
 
-* É semanticamente estruturada
-* Comunica corretamente estados
-* Funciona 100% por teclado
-* Funciona com leitores de tela
-* Segue as recomendações WCAG 2.1
+     * É semanticamente estruturada
+     * Comunica corretamente estados
+     * Funciona 100% por teclado
+     * Funciona com leitores de tela
+     * Segue as recomendações WCAG 2.1
 
 A acessibilidade começa com HTML correto.
 ARIA é complemento, não substituto.
