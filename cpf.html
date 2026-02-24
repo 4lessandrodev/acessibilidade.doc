@@ -1,0 +1,57 @@
+<!doctype html>
+<html lang="pt-BR">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Entrar — CPF</title>
+    <script src="script.js" defer></script>
+</head>
+
+<body data-page="cpf">
+    <a href="#conteudo-principal">Pular para o conteúdo principal</a>
+
+    <header>
+        <nav aria-label="Navegação superior">
+            <button type="button" id="back" aria-label="Voltar para a tela anterior">
+                <span aria-hidden="true">←</span>
+            </button>
+            <p id="titulo-tela">Entrar na minha conta</p>
+        </nav>
+    </header>
+
+    <main id="conteudo-principal" aria-labelledby="titulo-secao">
+        <section aria-labelledby="titulo-secao" aria-describedby="descricao-secao">
+            <h1 id="titulo-secao">Qual o seu CPF?</h1>
+            <p id="descricao-secao">Usaremos essa informação para verificar o seu acesso ao Portal.</p>
+
+            <div id="mensagens" role="status" aria-live="polite" aria-atomic="true"></div>
+
+            <form id="cpf-form" novalidate aria-describedby="descricao-secao">
+                <fieldset>
+                    <legend>Identificação</legend>
+
+                    <label for="cpf">Digite seu CPF</label>
+                    <p id="cpf-ajuda">Digite 11 números. Você pode usar pontos e traço, se quiser.</p>
+
+                    <input id="cpf" name="cpf" type="text" inputmode="numeric" autocomplete="username"
+                        aria-describedby="cpf-ajuda cpf-erro" aria-invalid="false" required
+                        placeholder="000.000.000-00" maxlength="14" max="99999999999" min="1"/>
+
+                    <p id="cpf-erro" role="alert"></p>
+
+                    <button type="submit" id="next">Próximo</button>
+                </fieldset>
+            </form>
+        </section>
+
+        <aside aria-label="Ajuda e suporte">
+            <p>
+                Está com dúvida?
+                <a href="index.html#referencias">Ver referências</a>
+            </p>
+        </aside>
+    </main>
+</body>
+
+</html>
