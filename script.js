@@ -38,6 +38,42 @@
         window.location.href = url;
     }
 
+    function formatCpf(digits) {
+      const d = (digits || "").replace(/\D/g, "").slice(0, 11);
+      let out = "";
+      for (let i = 0; i < d.length; i++) {
+        out += d[i];
+        if (i === 2 || i === 5) out += ".";
+        if (i === 8) out += "-";
+      }
+      return out;
+    }
+    
+    function applyCpfMaskKeepCaret(inputEl) {
+      const prev = inputEl.value || "";
+      const prevPos = inputEl.selectionStart ?? prev.length;
+    
+      // Quantos dígitos existiam antes do cursor
+      const digitsBefore = prev.slice(0, prevPos).replace(/\D/g, "").length;
+    
+      const digits = prev.replace(/\D/g, "").slice(0, 11);
+      const formatted = formatCpf(digits);
+    
+      // Só atualiza se mudou (evita flicker)
+      if (formatted === prev) return;
+    
+      inputEl.value = formatted;
+    
+      // Reposiciona o cursor depois do mesmo número de dígitos
+      let newPos = 0;
+      let seenDigits = 0;
+      while (newPos < formatted.length && seenDigits < digitsBefore) {
+        if (/\d/.test(formatted[newPos])) seenDigits++;
+        newPos++;
+      }
+      inputEl.setSelectionRange(newPos, newPos);
+    }
+    
     // ---- Page: Home -----------------------------------------------------------
     function initHome() {
         // Reset do demo
