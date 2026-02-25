@@ -1,5 +1,5 @@
 (function () {
-  const NAV_DELAY_MS = 250;
+  const NAV_DELAY_MS = 950;
 
   function byId(id) {
     return document.getElementById(id);
