@@ -168,7 +168,7 @@
       sessionStorage.setItem("demo.cpf", digits);
 
       // Mensagem + delay para permitir anúncio antes do redirect
-      announceAndGo(status, "CPF validado. Indo para a etapa de senha.", "senha.html");
+      announceAndGo(status, "Indo para a próxima etapa.", "senha.html");
     }
 
     input.addEventListener("blur", () => {
@@ -230,7 +230,7 @@
       }
 
       if (showError) {
-        setFieldInvalid(input, error, "Informe sua senha para continuar.");
+        setFieldInvalid(input, error, "Informe sua senha.");
         setText(status, "");
       } else {
         clearFieldInvalid(input, error);
@@ -249,7 +249,7 @@
 
       sessionStorage.setItem("demo.logged", "true");
 
-      announceAndGo(status, "Autenticação concluída. Indo para a tela de sucesso.", "sucesso.html");
+      announceAndGo(status, "Indo para a próxima tela", "sucesso.html");
     }
 
     input.addEventListener("blur", () => {
@@ -294,11 +294,11 @@
     if (btn) btn.addEventListener("click", () => (window.location.href = "home.html"));
 
     if (!logged) {
-      announceAndGo(status, "Sessão não encontrada. Redirecionando para Home.", "home.html");
+      announceAndGo(status, "Erro. Redirecionando para Home.", "home.html");
       return;
     }
 
-    announce(status, "Sucesso. Esta mensagem é anunciada por leitores de tela.");
+    announce(status, "Sucesso.");
   }
 
   // ---- Auto init por data-page ---------------------------------------------
